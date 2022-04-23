@@ -10,7 +10,7 @@ export class model<T extends base_entity>
     table_name: string;
 
     async get() {
-        return await new Promise<T[]>((resolve,reject)=>{
+        return await new Promise<T[]>((resolve, reject) =>{
             connection.query(`SELECT * FROM ${this.table_name}`, function (error, result) {
                 if (error) reject(error);
                 resolve(result)
@@ -26,9 +26,13 @@ export class model<T extends base_entity>
                 if(row.id)
                 {
                     promises.push(new Promise(
-                        resolve => 
+                        (resolve, reject) => 
                             connection.query(`DELETE FROM ${this.table_name} WHERE id = ?`, row.id, 
-                                result => resolve(result)
+                                (error, result) => 
+                                {
+                                    if (error) reject(error);
+                                    resolve(result)
+                                }
                             )
                         )
                     )
@@ -40,9 +44,13 @@ export class model<T extends base_entity>
                 {
                     delete row.id
                     promises.push(new Promise(
-                        resolve => 
+                        (resolve, reject) => 
                             connection.query(`INSERT INTO ${this.table_name} SET ?`, row, 
-                                result => resolve(result)
+                                (error, result) =>
+                                {
+                                    if (error) reject(error);
+                                    resolve(result)
+                                } 
                             )
                         )
                     )
@@ -50,9 +58,13 @@ export class model<T extends base_entity>
                 else
                 {
                     promises.push(new Promise(
-                        resolve => 
+                        (resolve, reject) => 
                             connection.query(`UPDATE ${this.table_name} SET ? WHERE id = ?`, [row, row.id], 
-                                result => resolve(result)
+                                (error, result)  => 
+                                {
+                                    if (error) reject(error);
+                                    resolve(result)
+                                }
                             )
                         )
                     )
