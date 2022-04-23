@@ -9,7 +9,7 @@ interface correlation{
   delete?: boolean;
 }
 const correlations = ref<correlation[]>([])
-
+// window.open('https://github.com', '_blank')
 connection.query('SELECT * FROM correlation_type', function (error, results) {
   if (error) throw error;
   correlations.value = results
@@ -37,6 +37,7 @@ const display_correlations = computed(() => {
 
 <template>
   <div class="container">
+    <h2 class="text-center">Correlations</h2>
     <div class="row">
       <div class="form-group" v-for="correlation in display_correlations" :key="correlation">
         <label for="name">Name:</label>
