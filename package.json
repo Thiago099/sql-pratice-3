@@ -16,7 +16,8 @@
     "font-awesome": "^4.7.0",
     "mysql": "^2.18.1",
     "ts-loader": "~8.2.0",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "^2.2.0",
