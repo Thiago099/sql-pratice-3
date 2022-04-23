@@ -1,8 +1,9 @@
 import { computed, ref } from 'vue';
 import entity from './entity';
+import { model } from '@/global/model'
+export const named_entity_model = ref<model<entity>>();
 
-
-export const correlation_type = ref<entity[]>([])
+export const named_entity = ref<entity[]>([])
 
 export function add()
 {
@@ -10,7 +11,7 @@ export function add()
         id: 0,
         name: ''
     }
-    correlation_type.value.push(newCorrelation)
+    named_entity.value.push(newCorrelation)
 }
 
 export function del(correlation: entity)
@@ -18,6 +19,11 @@ export function del(correlation: entity)
     correlation.delete = true
 }
 
-export const display_correlation_type = computed(() => 
-    correlation_type.value.filter(correlation => !correlation.delete)
+export function save()
+{
+    named_entity_model.value.save(named_entity.value)
+}
+
+export const display_named_entity = computed(() => 
+    named_entity.value.filter(correlation => !correlation.delete)
 )

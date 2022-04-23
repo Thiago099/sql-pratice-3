@@ -2,7 +2,7 @@
 
 <script setup  lang="ts">
 import { toRefs, defineProps } from 'vue'
-import { correlation_type, add, del, display_correlation_type } from './form'
+import { named_entity, add, del, save, display_named_entity, named_entity_model } from './form'
 import { model } from '@/global/model'
 import entity from './entity';
 const props = defineProps<{
@@ -11,10 +11,10 @@ const props = defineProps<{
 }>()
 const { table_name } = toRefs(props)
 
-const correlation_model = new model<entity>(table_name.value);
+named_entity_model.value = new model<entity>(table_name.value);
 
-correlation_model.get().then((result:entity[]) => {
-    correlation_type.value = result;
+named_entity_model.value.get().then((result:entity[]) => {
+    named_entity.value = result;
 });
 
 </script>
@@ -24,7 +24,7 @@ correlation_model.get().then((result:entity[]) => {
   <div class="container">
     <h2 class="text-center">{{ title }}</h2>
     <div class="row">
-      <div class="form-group" v-for="correlation in display_correlation_type" :key="correlation">
+      <div class="form-group" v-for="correlation in display_named_entity" :key="correlation">
         <label for="name">Name:</label>
         <div class="input-group">
           <input class="form-control" id="name" v-model="correlation.name">
@@ -37,7 +37,7 @@ correlation_model.get().then((result:entity[]) => {
     </div>
   </div>
   </div>
-  <div class="footer"><button class="btn btn-primary">Save</button></div>
+  <div class="footer"><button class="btn btn-primary" @click="save">Save</button></div>
 </template>
 <style>
 .form-group{
