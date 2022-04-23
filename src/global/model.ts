@@ -11,9 +11,9 @@ export class model<T extends base_entity>
 
     async get() {
         return await new Promise<T[]>((resolve,reject)=>{
-            connection.query(`SELECT * FROM ${this.table_name}`, function (error, results) {
+            connection.query(`SELECT * FROM ${this.table_name}`, function (error, result) {
                 if (error) reject(error);
-                resolve(results)
+                resolve(result)
             });
         })
     }
