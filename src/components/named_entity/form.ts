@@ -19,11 +19,19 @@ export function del(correlation: entity)
     correlation.delete = true
 }
 
-export function save()
+export async function save()
 {
-    named_entity_model.value.save(named_entity.value)
+    await named_entity_model.value.save(named_entity.value)
+    update_list()
 }
 
 export const display_named_entity = computed(() => 
     named_entity.value.filter(correlation => !correlation.delete)
 )
+
+export function update_list()
+{
+    named_entity_model.value.get().then((result:entity[]) => {
+        named_entity.value = result;
+    });
+}

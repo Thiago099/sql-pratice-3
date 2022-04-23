@@ -2,7 +2,7 @@
 
 <script setup  lang="ts">
 import { toRefs, defineProps } from 'vue'
-import { named_entity, add, del, save, display_named_entity, named_entity_model } from './form'
+import { add, del, save, display_named_entity, named_entity_model, update_list } from './form'
 import { model } from '@/global/model'
 import entity from './entity';
 const props = defineProps<{
@@ -13,9 +13,8 @@ const { table_name } = toRefs(props)
 
 named_entity_model.value = new model<entity>(table_name.value);
 
-named_entity_model.value.get().then((result:entity[]) => {
-    named_entity.value = result;
-});
+update_list()
+
 
 </script>
 

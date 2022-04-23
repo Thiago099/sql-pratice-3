@@ -18,24 +18,47 @@ export class model<T extends base_entity>
         })
     }
     async save(data: T[]) {
+        const promises : Promise<any>[] = []
         for(const row of data)
         {
             if(row.delete)
             {
-                connection.query(`DELETE FROM ${this.table_name} WHERE id = ?`, row.id);
+                if(row.id)
+                {
+                    promises.push(new Promise(
+                        resolve => 
+                            connection.query(`DELETE FROM ${this.table_name} WHERE id = ?`, row.id, 
+                                result => resolve(result)
+                            )
+                        )
+                    )
+                }
             }
             else
             {
                 if(row.id == 0)
                 {
                     delete row.id
-                    connection.query(`INSERT INTO ${this.table_name} SET ?`, row);
+                    promises.push(new Promise(
+                        resolve => 
+                            connection.query(`INSERT INTO ${this.table_name} SET ?`, row, 
+                                result => resolve(result)
+                            )
+                        )
+                    )
                 }
                 else
                 {
-                    connection.query(`UPDATE ${this.table_name} SET ? WHERE id = ?`, [row, row.id]);
+                    promises.push(new Promise(
+                        resolve => 
+                            connection.query(`UPDATE ${this.table_name} SET ? WHERE id = ?`, [row, row.id], 
+                                result => resolve(result)
+                            )
+                        )
+                    )
                 }
             }
+            await Promise.all(promises)
         }
     }
 }
