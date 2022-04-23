@@ -20,6 +20,7 @@ correlation_model.get().then((result:entity[]) => {
 </script>
 
 <template>
+<div class="content">
   <div class="container">
     <h2 class="text-center">{{ title }}</h2>
     <div class="row">
@@ -35,9 +36,33 @@ correlation_model.get().then((result:entity[]) => {
       </div>
     </div>
   </div>
+  </div>
+  <div class="footer"><button class="btn btn-primary">Save</button></div>
 </template>
 <style>
 .form-group{
   margin-top: 10px !important;
 }
+.footer{
+  border-top: 1px solid rgb(222,206,230);
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+}
+
+.footer button{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.content{
+  width: 100%;
+  height: calc((100%) - (102px));
+  position: absolute;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
 </style>
