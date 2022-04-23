@@ -38,7 +38,7 @@ update_list()
   </div>
   <div class="footer"><button class="btn btn-primary" @click="save">Save</button></div>
 </template>
-<style>
+<style scoped>
 .form-group{
   margin-top: 10px !important;
 }

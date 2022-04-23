@@ -7,7 +7,6 @@ const routes = router.getRoutes()
 </script>
 
 <template>
-  <div>
     <ul class="nav nav-tabs">
     <li 
     class="nav-item"
@@ -22,10 +21,15 @@ const routes = router.getRoutes()
         :to="{name}">{{ name }}</router-link>
     </li>
   </ul>
+  <div class="content">
     <router-view/>
   </div>
 </template>
 
 <style>
-
+.content{
+  width: 100%;
+  height: calc(100% - 48px);
+  position: absolute;
+}
 </style>
