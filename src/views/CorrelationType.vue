@@ -2,7 +2,7 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { connection } from '@/back-end/global/mysql';
+import { connection } from '@/global/mysql';
 interface correlation{
   id: number;
   name: string;
