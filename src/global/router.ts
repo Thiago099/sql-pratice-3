@@ -1,20 +1,17 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '@/views/correlation_type/correlation_type.vue'
+import Home from '@/views/entity/entityControl.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Entity',
     component: Home
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
+  {
+    path: '/Correlation_type',
+    name: 'Correlation type',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/correlation_type/correlation_type.vue')
+  }
 ]
 
 const router = createRouter({

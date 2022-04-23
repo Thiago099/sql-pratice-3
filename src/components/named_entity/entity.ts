@@ -1,4 +1,4 @@
-export default interface correlation_type{
+export default interface entity{
     id: number;
     name: string;
     delete?: boolean;

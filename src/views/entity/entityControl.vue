@@ -4,8 +4,8 @@ import namedEntity from '@/components/named_entity/named_entity.vue';
 <template>
     <div>
         <named-entity 
-        table_name="correlation_type"
-        title="Correlation Type"
+        table_name="entity"
+        title="Entity"
         />
     </div>
 </template>
