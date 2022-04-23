@@ -29,7 +29,6 @@ export class model<T extends base_entity>
                 if(row.id == 0)
                 {
                     delete row.id
-                    console.log(row);
                     connection.query(`INSERT INTO ${this.table_name} SET ?`, row);
                 }
                 else
