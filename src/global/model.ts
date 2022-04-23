@@ -18,7 +18,7 @@ export class model<T extends base_entity>
         })
     }
     async save(data: T[]) {
-        const promises : Promise<any>[] = []
+        const promises = []
         for(const row of data)
         {
             if(row.delete)
