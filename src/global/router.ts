@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '@/views/CorrelationType.vue'
+import Home from '@/views/correlation_type/correlation_type.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
