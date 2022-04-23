@@ -1,7 +1,9 @@
 import { computed, ref } from 'vue';
 import correlation_type_entity from '@/views/correlation_type/correlation_type_entity';
 import { model } from '@/global/model'
+
 const correlation_model = new model<correlation_type_entity>('correlation_type');
+
 export const correlation_type = ref<correlation_type_entity[]>([])
 correlation_model.get().then((result:correlation_type_entity[]) => {
     correlation_type.value = result;
