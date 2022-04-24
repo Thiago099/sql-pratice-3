@@ -1,6 +1,10 @@
 
 
 <script setup  lang="ts">
+import { ref } from 'vue'
+const popup = ref()
+
+import popupControl from '@/components/popup-control'
 import { toRefs, defineProps } from 'vue'
 import { add, del, save, display_named_entity, named_entity_model, update_list } from './form'
 import { model } from '@/global/model'
@@ -19,6 +23,8 @@ update_list()
 </script>
 
 <template>
+  <popup-control ref="popup">
+  </popup-control>
 <div class="content">
   <div class="container">
     <h2 class="text-center">{{ title }}</h2>
@@ -36,7 +42,7 @@ update_list()
     </div>
   </div>
   </div>
-  <div class="footer"><button class="btn btn-primary" @click="save">Save</button></div>
+  <div class="footer"><button class="btn btn-primary" @click="save();popup.addMessage('Saved','success')">Save</button></div>
 </template>
 <style scoped>
 .form-group{

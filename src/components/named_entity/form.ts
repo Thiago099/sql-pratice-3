@@ -2,7 +2,6 @@ import { computed, ref } from 'vue';
 import entity from './entity';
 import { model } from '@/global/model'
 export const named_entity_model = ref<model<entity>>();
-
 export const named_entity = ref<entity[]>([])
 
 export function add()
