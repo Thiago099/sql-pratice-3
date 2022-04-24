@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 const canvas = ref(null)
-import { ctx, draw } from './draw'
+import { ctx, draw, mouse_down, mouse_move, mouse_up } from './draw'
 
 function resize_canvas()
 {
@@ -22,5 +22,10 @@ onMounted(()=>{
 </script>
 
 <template>
-    <canvas ref="canvas"></canvas>
+    <canvas 
+        ref="canvas"
+        @mousedown="mouse_down"
+        @mousemove="mouse_move"
+        @mouseup="mouse_up"
+    ></canvas>
 </template>
