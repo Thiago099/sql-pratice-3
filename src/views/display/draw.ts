@@ -4,13 +4,15 @@ export const ctx = ref<CanvasRenderingContext2D>(null)
 export function draw()
 {
     ctx.value.clearRect(0, 0, ctx.value.canvas.width, ctx.value.canvas.height)
-    ctx.value.strokeStyle = "red"
-    ctx.value.lineWidth = 5
-    ctx.value.strokeRect(pos.x, pos.y, 100, 100)
+    
+    ctx.value.roundRect(pos.x, pos.y, 100, 100, 10)
+    ctx.value.strokeStyle = "black"
+    ctx.value.lineWidth = 2
+    ctx.value.stroke()
 }
 let drag = false
 const drag_pos = { x: 0, y: 0 }
-const pos = { x: 10, y: 10 }
+const pos = { x: 20, y: 20 }
 export function mouse_down(e: MouseEvent)
 {
     drag = true
