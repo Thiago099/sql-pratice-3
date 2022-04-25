@@ -64,10 +64,10 @@ update_list()
 
 .content{
   width: 100%;
-  height: calc((100%) - (102px));
+  height: calc((100%) - (44px));
   position: absolute;
   overflow-y: auto;
-  margin-top: 10px;
+  padding-top: 10px;
 }
 
 </style>
