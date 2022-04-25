@@ -41,12 +41,12 @@ update_list()
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-success" @click="add"><i class="fa fa-plus"></i></button>
+        <button class="btn btn-success" @click="add">Add <i class="fa fa-plus"></i></button>
       </div>
     </div>
   </div>
   </div>
-  <div class="footer"><button class="btn btn-primary" @click="save();popup.addMessage('Updated successfully.','success')">Save</button></div>
+  <div class="footer"><button class="btn btn-primary" @click="save();popup.addMessage('Updated successfully.','success')">Update</button></div>
 </template>
 <style scoped>
 .search-container{
