@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { point, entity } from './interfaces'
-import { bake_entity, point_entity } from './entity'
+import { bake_entity, point_entity } from './entity_graphics'
 
 export const entities = ref<entity[]>([
     {

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 const canvas = ref(null)
-import { ctx, draw, mouse_down, mouse_move, mouse_up } from './draw'
+import { ctx, draw } from './draw'
+import { mouse_down, mouse_move, mouse_up } from './mouse'
 
 function resize_canvas()
 {
