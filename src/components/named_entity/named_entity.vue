@@ -46,7 +46,7 @@ update_list()
     </div>
   </div>
   </div>
-  <div class="footer"><button class="btn btn-primary" @click="save();popup.addMessage('Saved','success')">Save</button></div>
+  <div class="footer"><button class="btn btn-primary" @click="save();popup.addMessage('Updated successfully.','success')">Save</button></div>
 </template>
 <style scoped>
 .search-container{
