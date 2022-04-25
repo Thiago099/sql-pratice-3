@@ -63,7 +63,7 @@ INSERT INTO `correlation_type` (`id`, `name`) VALUES
 INSERT INTO `correlation_type` (`id`, `name`) VALUES
 	(3, 'causes');
 INSERT INTO `correlation_type` (`id`, `name`) VALUES
-	(5, 'is');
+	(5, 'adjective');
 INSERT INTO `correlation_type` (`id`, `name`) VALUES
 	(6, 'verb');
 INSERT INTO `correlation_type` (`id`, `name`) VALUES
@@ -92,7 +92,7 @@ INSERT INTO `entity` (`id`, `name`) VALUES
 INSERT INTO `entity` (`id`, `name`) VALUES
 	(14, 'hands');
 INSERT INTO `entity` (`id`, `name`) VALUES
-	(16, 'pan');
+	(16, 'my pan');
 /*!40000 ALTER TABLE `entity` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
