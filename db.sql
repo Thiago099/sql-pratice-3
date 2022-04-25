@@ -14,14 +14,15 @@
 
 
 -- Copiando estrutura do banco de dados para meaning
+DROP DATABASE IF EXISTS `meaning`;
 CREATE DATABASE IF NOT EXISTS `meaning` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `meaning`;
 
 -- Copiando estrutura para tabela meaning.correlation
 CREATE TABLE IF NOT EXISTS `correlation` (
+  `id_correlation_type` int(11) DEFAULT NULL,
   `id_entity_from` int(11) DEFAULT NULL,
   `id_entity_to` int(11) DEFAULT NULL,
-  `id_correlation_type` int(11) DEFAULT NULL,
   KEY `FK_correlation_entity` (`id_entity_from`),
   KEY `FK_correlation_entity_2` (`id_entity_to`),
   KEY `FK_correlation_correlation_type` (`id_correlation_type`),
@@ -30,8 +31,20 @@ CREATE TABLE IF NOT EXISTS `correlation` (
   CONSTRAINT `FK_correlation_entity_2` FOREIGN KEY (`id_entity_to`) REFERENCES `entity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela meaning.correlation: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela meaning.correlation: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `correlation` DISABLE KEYS */;
+INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(3, 9, 10);
+INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(6, 13, 10);
+INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(7, 12, 9);
+INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(6, 11, 9);
+INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(7, 14, 10);
+INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(5, 12, 16);
 /*!40000 ALTER TABLE `correlation` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela meaning.correlation_type
@@ -39,14 +52,22 @@ CREATE TABLE IF NOT EXISTS `correlation_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela meaning.correlation_type: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela meaning.correlation_type: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `correlation_type` DISABLE KEYS */;
 INSERT INTO `correlation_type` (`id`, `name`) VALUES
-	(1, 'generalization'),
-	(2, 'containing'),
-	(3, 'causality');
+	(1, 'generic');
+INSERT INTO `correlation_type` (`id`, `name`) VALUES
+	(2, 'contain');
+INSERT INTO `correlation_type` (`id`, `name`) VALUES
+	(3, 'causes');
+INSERT INTO `correlation_type` (`id`, `name`) VALUES
+	(5, 'is');
+INSERT INTO `correlation_type` (`id`, `name`) VALUES
+	(6, 'verb');
+INSERT INTO `correlation_type` (`id`, `name`) VALUES
+	(7, 'subject');
 /*!40000 ALTER TABLE `correlation_type` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela meaning.entity
@@ -54,10 +75,24 @@ CREATE TABLE IF NOT EXISTS `entity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela meaning.entity: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela meaning.entity: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `entity` DISABLE KEYS */;
+INSERT INTO `entity` (`id`, `name`) VALUES
+	(9, 'touch hot');
+INSERT INTO `entity` (`id`, `name`) VALUES
+	(10, 'burn hands');
+INSERT INTO `entity` (`id`, `name`) VALUES
+	(11, 'touch');
+INSERT INTO `entity` (`id`, `name`) VALUES
+	(12, 'hot');
+INSERT INTO `entity` (`id`, `name`) VALUES
+	(13, 'burn');
+INSERT INTO `entity` (`id`, `name`) VALUES
+	(14, 'hands');
+INSERT INTO `entity` (`id`, `name`) VALUES
+	(16, 'pan');
 /*!40000 ALTER TABLE `entity` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
