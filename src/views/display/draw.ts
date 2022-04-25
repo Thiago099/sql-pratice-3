@@ -1,36 +1,57 @@
 import { ref } from 'vue'
 export const ctx = ref<CanvasRenderingContext2D>(null)
+import { bake_entity, point_entity } from './entity'
+
+import { point, entity } from './interfaces'
+
+
+const drag_offset : point = { x: 0, y: 0 }
+let drag_point : point = null
+const entities : entity[] = [
+    {
+        position: { x: 100, y: 50 },
+        text: 'Hello World',
+        image: bake_entity("Hello world")
+    }
+]
 
 export function draw()
 {
-    ctx.value.clearRect(0, 0, ctx.value.canvas.width, ctx.value.canvas.height)
-    
-    ctx.value.roundRect(pos.x, pos.y, 100, 100, 10)
-    ctx.value.strokeStyle = "black"
-    ctx.value.lineWidth = 2
-    ctx.value.stroke()
+    const c = ctx.value
+    c.clearRect(0, 0, c.canvas.width, c.canvas.height)
+
+    for(const {image, position} of entities)
+    {
+        c.drawImage(image, position.x - image.width / 2, position.y - image.height / 2)
+    }
 }
-let drag = false
-const drag_pos = { x: 0, y: 0 }
-const pos = { x: 20, y: 20 }
+
 export function mouse_down(e: MouseEvent)
 {
-    drag = true
-    drag_pos.x = e.offsetX - pos.x
-    drag_pos.y = e.offsetY - pos.y
+    const mouse:point = {x:e.offsetX, y:e.offsetY}
+
+    for(const entity of entities)
+    {
+        if(point_entity(mouse, entity))
+        {
+            drag_point = entity.position
+            drag_offset.x = e.offsetX - entity.position.x
+            drag_offset.y = e.offsetY - entity.position.y
+        }
+    }
 }
 
 export function mouse_move(e: MouseEvent)
 {
-    if(drag)
+    if(drag_point)
     {
-        pos.x = e.offsetX - drag_pos.x
-        pos.y = e.offsetY - drag_pos.y
+        drag_point.x = e.offsetX - drag_offset.x
+        drag_point.y = e.offsetY - drag_offset.y
         draw()
     }
 }
 
 export function mouse_up(e: MouseEvent)
 {
-    drag = false
+    drag_point = null
 }
