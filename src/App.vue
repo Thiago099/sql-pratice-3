@@ -10,14 +10,14 @@ const routes = router.getRoutes()
   <ul class="nav nav-tabs">
     <li 
       class="nav-item"
-      v-for="({name}) in routes"
+      v-for="({ name }) in routes"
       :key = "name"
     >
       <router-link 
         class="nav-link" 
-        :class="{active:route.name == name}"
+        :class="{active: route.name == name}"
         aria-current="page" 
-        :to="{name}">{{ name }}
+        :to="{ name }">{{ name }}
       </router-link>
     </li>
   </ul>
