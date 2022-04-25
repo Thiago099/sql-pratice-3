@@ -30,7 +30,7 @@ update_list()
     <h2 class="text-center">{{ title }}</h2>
     <div class="form-group search-container">
       <i class="fa fa-search search-overlay"></i>
-      <input class="form-control search-input" type="text" name="" id="" v-model="search"> 
+      <input class="form-control search-input" type="text" name="" id="" v-model="search" placeholder="Search"> 
     </div>
     <div class="row">
       <div class="form-group col-xl-3 col-sm-6" v-for="correlation in display_named_entity" :key="correlation">
