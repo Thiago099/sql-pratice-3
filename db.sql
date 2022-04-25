@@ -14,37 +14,38 @@
 
 
 -- Copiando estrutura do banco de dados para meaning
-DROP DATABASE IF EXISTS `meaning`;
 CREATE DATABASE IF NOT EXISTS `meaning` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `meaning`;
 
 -- Copiando estrutura para tabela meaning.correlation
 CREATE TABLE IF NOT EXISTS `correlation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_correlation_type` int(11) DEFAULT NULL,
   `id_entity_from` int(11) DEFAULT NULL,
   `id_entity_to` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `FK_correlation_entity` (`id_entity_from`),
   KEY `FK_correlation_entity_2` (`id_entity_to`),
   KEY `FK_correlation_correlation_type` (`id_correlation_type`),
   CONSTRAINT `FK_correlation_correlation_type` FOREIGN KEY (`id_correlation_type`) REFERENCES `correlation_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_correlation_entity` FOREIGN KEY (`id_entity_from`) REFERENCES `entity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_correlation_entity_2` FOREIGN KEY (`id_entity_to`) REFERENCES `entity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela meaning.correlation: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `correlation` DISABLE KEYS */;
-INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
-	(3, 9, 10);
-INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
-	(6, 13, 10);
-INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
-	(7, 12, 9);
-INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
-	(6, 11, 9);
-INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
-	(7, 14, 10);
-INSERT INTO `correlation` (`id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
-	(5, 12, 16);
+INSERT INTO `correlation` (`id`, `id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(1, 3, 9, 10);
+INSERT INTO `correlation` (`id`, `id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(2, 6, 13, 10);
+INSERT INTO `correlation` (`id`, `id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(3, 5, 12, 9);
+INSERT INTO `correlation` (`id`, `id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(4, 6, 11, 9);
+INSERT INTO `correlation` (`id`, `id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(5, 7, 14, 10);
+INSERT INTO `correlation` (`id`, `id_correlation_type`, `id_entity_from`, `id_entity_to`) VALUES
+	(6, 5, 12, 16);
 /*!40000 ALTER TABLE `correlation` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela meaning.correlation_type
@@ -67,7 +68,7 @@ INSERT INTO `correlation_type` (`id`, `name`) VALUES
 INSERT INTO `correlation_type` (`id`, `name`) VALUES
 	(6, 'verb');
 INSERT INTO `correlation_type` (`id`, `name`) VALUES
-	(7, 'subject');
+	(7, 'substantive');
 /*!40000 ALTER TABLE `correlation_type` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela meaning.entity
