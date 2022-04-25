@@ -3,19 +3,19 @@ import entity from './entity';
 import { model } from '@/global/model'
 export const named_entity_model = ref<model<entity>>();
 export const named_entity = ref<entity[]>([])
-
+export const search = ref<string>('')
 export function add()
 {
-    const newCorrelation : entity = {
+    const newItem : entity = {
         id: 0,
         name: ''
     }
-    named_entity.value.push(newCorrelation)
+    named_entity.value.push(newItem)
 }
 
-export function del(correlation: entity)
+export function del(item: entity)
 {
-    correlation.delete = true
+    item.delete = true
 }
 
 export async function save()
@@ -25,7 +25,7 @@ export async function save()
 }
 
 export const display_named_entity = computed(() => 
-    named_entity.value.filter(correlation => !correlation.delete)
+    named_entity.value.filter(item => !item.delete && item.name.toLowerCase().includes(search.value.toLowerCase()))
 )
 
 export function update_list()

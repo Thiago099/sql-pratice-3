@@ -6,7 +6,7 @@ const popup = ref()
 
 import popupControl from '@/components/popup-control'
 import { toRefs, defineProps } from 'vue'
-import { add, del, save, display_named_entity, named_entity_model, update_list } from './form'
+import { add, del, save, display_named_entity, search, named_entity_model, update_list } from './form'
 import { model } from '@/global/model'
 import entity from './entity';
 const props = defineProps<{
@@ -28,8 +28,12 @@ update_list()
 <div class="content">
   <div class="container">
     <h2 class="text-center">{{ title }}</h2>
+    <div class="form-group search-container">
+      <i class="fa fa-search search-overlay"></i>
+      <input class="form-control search-input" type="text" name="" id="" v-model="search"> 
+    </div>
     <div class="row">
-      <div class="form-group" v-for="correlation in display_named_entity" :key="correlation">
+      <div class="form-group col-xl-3 col-sm-6" v-for="correlation in display_named_entity" :key="correlation">
         <!-- <label for="name">Name:</label> -->
         <div class="input-group">
           <input class="form-control" id="name" v-model="correlation.name">
@@ -45,6 +49,22 @@ update_list()
   <div class="footer"><button class="btn btn-primary" @click="save();popup.addMessage('Saved','success')">Save</button></div>
 </template>
 <style scoped>
+.search-container{
+  max-width: 800px;
+  margin:auto
+}
+.search-input{
+  padding-left:40px;
+  margin-top:20px;
+  margin-bottom:30px;
+  
+}
+.search-overlay{
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 10px;
+  color: #777;
+}
 .form-group{
   margin-top: 10px !important;
 }
