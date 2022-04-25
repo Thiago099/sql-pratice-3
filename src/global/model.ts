@@ -2,16 +2,20 @@ import { connection } from '@/global/mysql';
 import base_entity from '@/global/base_entity';
 export class model<T extends base_entity>
 {
-    constructor(table_name: string)
+    constructor(table_name: string, sort_column:string = null)
     {
         this.table_name = table_name;
+        this.sort_column = sort_column;
     }
 
     table_name: string;
+    sort_column: string;
 
     async get() {
+        let sql = ''
+        if(this.sort_column != null) sql = ` ORDER BY ${this.sort_column} ASC`;
         return await new Promise<T[]>((resolve, reject) =>{
-            connection.query(`SELECT * FROM ${this.table_name}`, function (error, result) {
+            connection.query(`SELECT * FROM ${this.table_name}${sql}`, function (error, result) {
                 if (error) reject(error);
                 resolve(result)
             });

@@ -15,7 +15,7 @@ const props = defineProps<{
 }>()
 const { table_name } = toRefs(props)
 
-named_entity_model.value = new model<entity>(table_name.value);
+named_entity_model.value = new model<entity>(table_name.value,'name');
 
 update_list()
 
