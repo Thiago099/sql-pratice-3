@@ -23,7 +23,7 @@ export function draw()
 export function mouse_down(e: MouseEvent)
 {
     const mouse:point = {x:e.offsetX, y:e.offsetY}
-
+    
     for(const entity of entities.value)
     {
         if(point_entity(mouse, entity))

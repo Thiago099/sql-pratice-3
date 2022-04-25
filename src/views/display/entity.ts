@@ -28,7 +28,15 @@ export function bake_entity(text: string)
     return entity
 }
 
+
 export function point_entity(point: point, entity: entity)
 {
-    return point.x > entity.position.x && point.x < entity.position.x + entity.image.width && point.y > entity.position.y && point.y < entity.position.y + entity.image.height
+    const x = entity.position.x - entity.image.width / 2
+    const y = entity.position.y - entity.image.height / 2
+    return (
+        point.x > x && 
+        point.x < x + entity.image.width && 
+        point.y > y && 
+        point.y < y + entity.image.height
+    )
 }
