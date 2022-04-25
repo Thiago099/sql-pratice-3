@@ -12,11 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Correlation type',
     component: () => import(/* webpackChunkName: "about" */ '@/views/correlation_type/correlation_type.vue')
   },
-  {
-    path: '/display_control',
-    name: 'Display',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/display/display_control.vue')
-  }
+  // {
+  //   path: '/display_control',
+  //   name: 'Display',
+  //   component: () => import(/* webpackChunkName: "about" */ '@/views/display/display_control.vue')
+  // }
 ]
 
 const router = createRouter({
