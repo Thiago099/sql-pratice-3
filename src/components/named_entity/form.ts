@@ -20,8 +20,11 @@ export function del(item: entity)
 
 export async function save()
 {
-    await named_entity_model.value.save(named_entity.value)
-    update_list()
+    if(named_entity_model.value)
+    {
+        await named_entity_model.value.save(named_entity.value)
+        update_list()
+    }
 }
 
 export const display_named_entity = computed(() => 
@@ -30,7 +33,10 @@ export const display_named_entity = computed(() =>
 
 export function update_list()
 {
-    named_entity_model.value.get().then((result:entity[]) => {
-        named_entity.value = result;
-    });
+    if(named_entity_model.value)
+    {
+        named_entity_model.value.get().then((result:entity[]) => {
+            named_entity.value = result;
+        });
+    }
 }

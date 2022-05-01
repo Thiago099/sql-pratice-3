@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-export const ctx = ref<CanvasRenderingContext2D>(null)
+export const ctx = ref<CanvasRenderingContext2D>()
 
 import { entities } from './entities'
 

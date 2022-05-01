@@ -6,6 +6,5 @@ export const connection = createConnection({
   password : '',
   database : 'meaning'
 });
- 
+
 connection.connect();
- 

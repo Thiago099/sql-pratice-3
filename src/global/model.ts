@@ -14,12 +14,14 @@ export class model<T extends base_entity>
     async get() {
         let sql = ''
         if(this.sort_column != null) sql = ` ORDER BY ${this.sort_column} ASC`;
+        
         return await new Promise<T[]>((resolve, reject) =>{
             connection.query(`SELECT * FROM ${this.table_name}${sql}`, function (error, result) {
                 if (error) reject(error);
                 resolve(result)
             });
         })
+
     }
     async save(data: T[]) {
         const promises = []

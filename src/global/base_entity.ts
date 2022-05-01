@@ -1,4 +1,4 @@
 export default interface entity {
-    id: number;
+    id?: number;
     delete?: boolean;
 }
